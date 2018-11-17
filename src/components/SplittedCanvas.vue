@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <sui-grid :columns=4 :stackable=true>
     <single-canvas
     v-for="c in canvasData"
     :key="c.id"
     :canvas-data="c"/>
-  </div>
+  </sui-grid>
 </template>
 <script>
 import SingleCanvas from './SingleCanvas'

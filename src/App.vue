@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <splitted-canvas :canvas-data="canvasData"/>
+    <sui-grid :columns=2 :stackable=true>
+      <splitted-canvas :canvas-data="canvasData"/>
+    </sui-grid>
   </div>
 </template>
 

@@ -1,8 +1,8 @@
 <template>
-  <div>
+  <sui-grid-column :width=4>
     <p>{{ canvasData.id }}</p>
     <canvas></canvas>
-  </div>
+  </sui-grid-column>
 </template>
 <script>
 export default {
@@ -11,3 +11,9 @@ export default {
   }
 }
 </script>
+<style>
+canvas{
+  width: 100%;
+  height: auto;
+}
+</style>
