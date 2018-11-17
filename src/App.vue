@@ -1,28 +1,52 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    <HelloWorld/>
+    <splitted-canvas :canvas-data="canvasData"/>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld'
+import SplittedCanvas from './components/SplittedCanvas'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    SplittedCanvas
+  },
+  data () {
+    return {
+      canvasData: [{
+        id: 'canvas-1',
+        data: null
+      },
+      {
+        id: 'canvas-2',
+        data: null
+      },
+      {
+        id: 'canvas-3',
+        data: null
+      },
+      {
+        id: 'canvas-4',
+        data: null
+      },
+      {
+        id: 'canvas-5',
+        data: null
+      },
+      {
+        id: 'canvas-6',
+        data: null
+      },
+      {
+        id: 'canvas-7',
+        data: null
+      },
+      {
+        id: 'canvas-8',
+        data: null
+      }]
+    }
   }
 }
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
