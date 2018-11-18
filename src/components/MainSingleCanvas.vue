@@ -1,6 +1,6 @@
 <template>
   <sui-grid-column :width=8>
-    <canvas ref="canvas" class="single-canvas"></canvas>
+    <canvas ref="canvas" class="main-single-canvas"></canvas>
   </sui-grid-column>
 </template>
 <script>
@@ -23,8 +23,8 @@ export default {
 }
 </script>
 <style>
-.single-canvas{
-  width: 320px;
-  height: 240px;
+.main-single-canvas{
+  width: 640px;
+  height: 480px;
 }
 </style>

@@ -13,8 +13,27 @@ export default {
   components: {
     SingleCanvas
   },
-  props: {
-    canvasData: Array
+  data () {
+    const image = new Image()
+    image.src = require('../assets/logo.png')
+    return {
+      canvasData: [{
+        id: '1',
+        data: image
+      },
+      {
+        id: '2',
+        data: image
+      },
+      {
+        id: '3',
+        data: image
+      },
+      {
+        id: '4',
+        data: image
+      }]
+    }
   }
 }
 </script>
