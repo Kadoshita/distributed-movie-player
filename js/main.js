@@ -43,7 +43,14 @@ $(document).ready(() => {
         ctxs[3].drawImage(image, image.width / 2, image.height / 2, image.width / 2, image.height / 2, 0, 0, image.width / 2, image.height / 2);
     };
 
-    navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
+    navigator.mediaDevices.getUserMedia({ video: {
+        width:{
+            ideal:1280
+        },
+        height:{
+            ideal:720
+        }
+    }, audio: false }).then(stream => {
         let video = document.getElementById('main-video');
         video.srcObject = stream;
         setInterval(() => {
@@ -53,7 +60,7 @@ $(document).ready(() => {
             ctxs[1].drawImage(video, canvas.width / 2, 0, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
             ctxs[2].drawImage(video, 0, canvas.height / 2, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
             ctxs[3].drawImage(video, canvas.width / 2, canvas.height / 2, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
-        }, 200);
+        }, 100);
 
         for (let i = 0; i < splitCanvases.length; i++) {
             localStreams[i] = splitCanvases[i].captureStream(10);
