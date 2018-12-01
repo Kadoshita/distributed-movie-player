@@ -1,4 +1,24 @@
 $(document).ready(() => {
+    let clientscount=0;
+    const peer=new Peer({
+        key: 'c3afd194-1f93-4433-9d77-ecc566ea985c',
+        degug:3
+    });
+    peer.on('open',()=>{
+        console.log('open!!');
+        console.info(peer.id);
+        document.getElementById('my-id').innerHTML=peer.id;
+    });
+    peer.on('call',call=>{
+        console.log(call);
+        call.answer(localStreams[clientscount]);
+        clientscount++;
+    });
+    peer.on('error',err=>{
+        console.error(err);
+    })
+    let localStreams=[];
+
     const canvas = document.getElementById('main-canvas');
     const splitCanvases = document.getElementsByClassName('split-canvas');
     const ctx = canvas.getContext('2d');
@@ -26,14 +46,20 @@ $(document).ready(() => {
     navigator.mediaDevices.getUserMedia({ video: true, audio: false }).then(stream => {
         let video = document.getElementById('main-video');
         video.srcObject = stream;
-        /*setInterval(() => {
+        setInterval(() => {
             ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
 
             ctxs[0].drawImage(video, 0, 0, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
             ctxs[1].drawImage(video, canvas.width / 2, 0, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
             ctxs[2].drawImage(video, 0, canvas.height / 2, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
             ctxs[3].drawImage(video, canvas.width / 2, canvas.height / 2, canvas.width / 2, canvas.height / 2, 0, 0, canvas.width / 2, canvas.height / 2);
-        }, 200);*/
+        }, 200);
+
+        for (let i = 0; i < splitCanvases.length; i++) {
+            localStreams[i] = splitCanvases[i].captureStream(10);
+        }
+
+        console.log(localStreams);
     }).catch(() => {
         console.error('error');
     });
